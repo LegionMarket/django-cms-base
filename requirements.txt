@@ -1,4 +1,4 @@
-Django>=1.8,<1.11
+Django==1.10.8
 
 # install development version of django CMS for testing
 https://github.com/divio/django-cms/archive/develop.zip#egg=django-cms

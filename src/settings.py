@@ -38,7 +38,10 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     # djangocms_admin_style needs to be before django.contrib.admin!
     # https://django-cms.readthedocs.org/en/develop/how_to/install.html#configuring-your-project-for-django-cms
-    'djangocms_admin_style',
+    'jet',
+    # 'jet.dashboard',
+    # 'djangocms_admin_style',
+
     # django defaults
     'django.contrib.admin',
     'django.contrib.auth',
@@ -66,6 +69,7 @@ INSTALLED_APPS = [
     'djangocms_googlemap',
     'djangocms_video',
     'djangocms_audio',
+
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -164,7 +168,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en'
 
-TIME_ZONE = 'Europe/London'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -210,6 +214,7 @@ LANGUAGES = (
 
 CMS_TEMPLATES = (
     ('content.html', 'Content'),
+    ('t458_lavish/index.html', 'TLM-Lavish')
 )
 
 # CUSTOM
