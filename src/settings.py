@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 
 from django.utils.translation import ugettext_lazy as _
+from cmsplugin_cascade.utils import format_lazy
+from django.core.urlresolvers import reverse_lazy
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -69,6 +72,14 @@ INSTALLED_APPS = [
     'djangocms_googlemap',
     'djangocms_video',
     'djangocms_audio',
+
+    # Cassaade
+    'cmsplugin_cascade',
+    'cmsplugin_cascade.clipboard',
+    'cmsplugin_cascade.sharable',
+    'cmsplugin_cascade.extra_fields',
+    'cmsplugin_cascade.icon',
+    'cmsplugin_cascade.segmentation',
 
 ]
 
@@ -197,7 +208,9 @@ SITE_ID = 1
 
 CMS_PERMISSION = True
 
-CMS_PLACEHOLDER_CONF = {}
+CMS_PLACEHOLDER_CONF = {
+
+}
 
 CMS_PAGE_WIZARD_CONTENT_PLACEHOLDER = 'content'
 
@@ -231,7 +244,58 @@ THUMBNAIL_PROCESSORS = (
 
 # CKEditor
 # DOCS: https://github.com/divio/djangocms-text-ckeditor
+# CKEDITOR_SETTINGS = {
+#     'stylesSet': 'default:/static/js/addons/ckeditor.wysiwyg.js',
+#     'contentsCss': ['/static/css/base.css'],
+# }
+
 CKEDITOR_SETTINGS = {
-    'stylesSet': 'default:/static/js/addons/ckeditor.wysiwyg.js',
-    'contentsCss': ['/static/css/base.css'],
+    'language': '{{ language }}',
+    'skin': 'moono',
+    'toolbar': 'CMS',
+    'toolbar_HTMLField': [
+        ['Undo', 'Redo'],
+        ['cmsplugins', '-', 'ShowBlocks'],
+        ['Format', 'Styles'],
+        ['TextColor', 'BGColor', '-', 'PasteText', 'PasteFromWord'],
+        ['Maximize', ''],
+        '/',
+        ['Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', 'RemoveFormat'],
+        ['JustifyLeft', 'JustifyCenter', 'JustifyRight'],
+        ['HorizontalRule'],
+        ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Table'],
+        ['Source']
+    ],
+    'stylesSet': format_lazy('default:{}', reverse_lazy('admin:cascade_texticon_wysiwig_config')),
+}
+
+CKEDITOR_SETTINGS_CAPTION = {
+    'language': '{{ language }}',
+    'skin': 'moono',
+    'height': 70,
+    'toolbar_HTMLField': [
+        ['Undo', 'Redo'],
+        ['Format', 'Styles'],
+        ['Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', 'RemoveFormat'],
+        ['Source']
+    ],
+}
+
+CKEDITOR_SETTINGS_DESCRIPTION = {
+    'language': '{{ language }}',
+    'skin': 'moono',
+    'height': 250,
+    'toolbar_HTMLField': [
+        ['Undo', 'Redo'],
+        ['cmsplugins', '-', 'ShowBlocks'],
+        ['Format', 'Styles'],
+        ['TextColor', 'BGColor', '-', 'PasteText', 'PasteFromWord'],
+        ['Maximize', ''],
+        '/',
+        ['Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', 'RemoveFormat'],
+        ['JustifyLeft', 'JustifyCenter', 'JustifyRight'],
+        ['HorizontalRule'],
+        ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Table'],
+        ['Source']
+    ],
 }

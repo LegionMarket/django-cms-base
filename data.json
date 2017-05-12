@@ -3,8 +3,8 @@
     "model": "sites.site",
     "pk": 1,
     "fields": {
-        "domain": "example.com",
-        "name": "Demo"
+        "domain": "example.local",
+        "name": "LegionMarket"
     }
 },
 {
@@ -15,9 +15,9 @@
         "last_login": null,
         "is_superuser": true,
         "username": "admin",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
+        "first_name": "Legion",
+        "last_name": "Market",
+        "email": "admin@example.local",
         "is_staff": true,
         "is_active": true,
         "date_joined": "2017-04-09T15:10:47.955Z",
