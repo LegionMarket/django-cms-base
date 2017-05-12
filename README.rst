@@ -1,5 +1,5 @@
 ###############
-django CMS demo
+django CMS Base
 ###############
 
 |build|
