@@ -17,10 +17,13 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
+from video_back import urls
 
 urlpatterns = [
+    url(r'(?P<pk>\d+)/$', include(urls, namespace='video_back')),
     url(r'^jet/', include('jet.urls', 'jet')),
     url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('cms.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

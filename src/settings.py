@@ -38,22 +38,24 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS = (
     # djangocms_admin_style needs to be before django.contrib.admin!
     # https://django-cms.readthedocs.org/en/develop/how_to/install.html#configuring-your-project-for-django-cms
     'jet',
-    # 'jet.dashboard',
+    'jet.dashboard',
     # 'djangocms_admin_style',
 
     # django defaults
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    # django CMS additions
     'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.admin',
+    'django.contrib.staticfiles',
+
+)
+DJANGO_CMS = (
     'cms',
     'menus',
     'treebeard',
@@ -73,6 +75,8 @@ INSTALLED_APPS = [
     'djangocms_video',
     'djangocms_audio',
 
+)
+DJANGO_CMS_ADDONS = (
     # Cassaade
     'cmsplugin_cascade',
     'cmsplugin_cascade.clipboard',
@@ -81,7 +85,18 @@ INSTALLED_APPS = [
     'cmsplugin_cascade.icon',
     'cmsplugin_cascade.segmentation',
 
-]
+)
+
+THIRD_PARTY_APPS = (
+    'embed_video',
+)
+
+LOCAL_APPS = (
+    'video_back',
+
+)
+
+INSTALLED_APPS = DJANGO_APPS + DJANGO_CMS + DJANGO_CMS_ADDONS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE_CLASSES = (
     # its recommended to place this as high as possible to enable apphooks
@@ -299,3 +314,5 @@ CKEDITOR_SETTINGS_DESCRIPTION = {
         ['Source']
     ],
 }
+# Embed Video
+APPEND_SLASH = True

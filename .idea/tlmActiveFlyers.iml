@@ -2,7 +2,7 @@
 <module type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="Python" name="Python">
-      <configuration sdkName="" />
+      <configuration sdkName="Remote Python 3.4.2 (sftp://fuschiaatinuma@192.168.1.69:22/home/fuschiaatinuma/pythons/aP34env003/bin/python3.4)" />
     </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
@@ -12,9 +12,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Remote Python 3.4.2 (sftp://fuschiaatinuma@192.168.1.69:22/home/fuschiaatinuma/pythons/aP34env003/bin/python3.4) interpreter library" level="application" />
   </component>
   <component name="TemplatesService">
-    <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
+    <option name="TEMPLATE_CONFIGURATION" value="Django" />
     <option name="TEMPLATE_FOLDERS">
       <list>
         <option value="$MODULE_DIR$/templates" />
