@@ -14,3 +14,4 @@ db.sqlite3
 /templates
 /static
 boilerplate.json
+/node_modules/
