@@ -151,7 +151,7 @@ DEV_APP = (
     'django.contrib.redirects',
 )
 
-INSTALLED_APPS = DJANGO_APPS_JET + DJANGO_APPS + SHOP_TOO + \
+INSTALLED_APPS = DJANGO_APPS + SHOP_TOO + \
                  DJANGO_CMS + DJANGO_CMS_ADDONS + THIRD_PARTY_APPS + \
                  LOCAL_APPS + SHOP
 #######

@@ -19,13 +19,13 @@ def render_robots(request):
     return HttpResponse('User-Agent: *\n%s: /\n' % permission, content_type='text/plain')
 
 urlpatterns = [
+    # url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
+    # url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
     url(r'^robots\.txt$', render_robots),
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     url(r'^password-reset-confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/?$',
         PasswordResetConfirm.as_view(template_name='tlmshop/pages/password-reset-confirm.html'),
         name='password_reset_confirm'),
-    url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
-    url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     url(r'^admin/', include(admin.site.urls)),
     url(r'^shop/', include('shop.urls', namespace='shop')),
     url(r'^', include('cms.urls')),
