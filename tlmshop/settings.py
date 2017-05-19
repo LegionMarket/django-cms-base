@@ -78,8 +78,9 @@ DJANGO_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.staticfiles',
+
 )
 DJANGO_CMS = (
     'cms',
@@ -151,7 +152,7 @@ DEV_APP = (
     'django.contrib.redirects',
 )
 
-INSTALLED_APPS = DJANGO_APPS + SHOP_TOO + \
+INSTALLED_APPS = DJANGO_APPS_ADMIN_INTERFACE + DJANGO_APPS + SHOP_TOO + \
                  DJANGO_CMS + DJANGO_CMS_ADDONS + THIRD_PARTY_APPS + \
                  LOCAL_APPS + SHOP
 #######
@@ -276,7 +277,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 STATIC_ROOT = os.path.join(WORK_DIR, 'static')
 STATIC_URL = '/static/'
-
+# print(STATIC_ROOT)
 # we need to add additional configuration for filer etc.
 MEDIA_ROOT = os.path.join(WORK_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -289,8 +290,8 @@ if not os.path.exists(MEDIA_ROOT):
 
 STATICFILES_FINDERS = [
     # 'tlmshop.finders.FileSystemFinder',  # or
-    'django.contrib.staticfiles.finders.FileSystemFinder',
     # 'tlmshop.finders.AppDirectoriesFinder',  # or
+    'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'sass_processor.finders.CssFinder',
     'compressor.finders.CompressorFinder',
@@ -301,8 +302,11 @@ if not os.path.exists(NODE):
     os.makedirs(NODE)
 
 STATICFILES_DIRS = [
+    ('static', os.path.join(PROJECT_ROOT, 'static')),
     ('node_modules', os.path.join(PROJECT_ROOT, 'node_modules')),
+    ('templates', os.path.join(PROJECT_ROOT, 'templates')),
 ]
+# print(STATICFILES_DIRS)
 NODE_MODULES_URL = STATIC_URL + 'node_modules/'
 # print(STATICFILES_DIRS)
 
@@ -317,6 +321,9 @@ FSM_ADMIN_FORCE_PERMIT = True
 ROBOTS_META_TAGS = ('noindex', 'nofollow')
 # django CMS settings
 # http://docs.django-cms.org/en/latest/
+# #########################################
+
+# Static Templates Files
 
 
 CMS_PERMISSION = True
@@ -331,9 +338,9 @@ CMS_PAGE_WIZARD_CONTENT_PLACEHOLDER = 'content'
 # django CMS internationalization
 # http://docs.django-cms.org/en/latest/topics/i18n.html
 
-LANGUAGES = (
-    ('en', _('English')),
-)
+# LANGUAGES = (
+#     ('en', _('English')),
+# )
 
 # django CMS templates
 # http://docs.django-cms.org/en/latest/how_to/templates.html

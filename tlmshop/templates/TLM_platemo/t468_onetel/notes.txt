@@ -1,0 +1,33 @@
+{% extends "TLM_platemo/t468_onetel/base_root.html" %}
+{% load i18n staticfiles cms_tags menu_tags %}
+
+{% block body_class %}tpl-base{% endblock %}
+
+{# no indent for better readability on extend_root #}
+{% block extend_root %}
+{% block header %}
+
+
+    <footer class="footer" role="contentinfo">
+        <h1 class="sr-only" id="page-footer">{% trans "Sitemap" %}</h1>
+
+        <div class="container">
+            {% static_placeholder "footer" %}
+            {% render_model_block request.current_page "changelist" %}
+                <ul class="list-inline">
+                    <li class="pull-right"><a href="#page-top" data-spy="scroll"><span class="fa fa-left fa-arrow-up"></span>{% trans "Back to top" %}</a></li>
+                    {% show_menu_below_id "footer" 0 0 100 100 "TLM_platemo/t468_onetel/includes/menu/navigation.html" %}
+                </ul>
+            {% endrender_model_block %}
+        </div>
+    </footer>
+
+
+
+
+RegExp
+(<h2>)(.+)(<\/h2>)
+$1{\% block $2 \%} {\% endblock $2 \%} $3
+
+(<h2>)(\w+)\s([A-Z|a-z]).+(<\/h2>
+$1{\% block \L$2 \%} {\% endblock \L$2 \%} $4

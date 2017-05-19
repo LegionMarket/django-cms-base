@@ -1,0 +1,8 @@
+- \n{%- if record.title is defined %}{{ record.title|striptags }} | {% endif -%}\n{{ app.config.get('\''general\/sitename'\'') -}}\n{% if record.title is not defined and app.config.get('\''general\/payoff'\'') %} | {{ app.config.get('\''general\/payoff'\'') }}{% endif -%}\n
+
+
+
+{%- if record.title is defined %}{{ record.title|striptags }} | {% endif -%}
+{{ app.config.get('general/sitename') -}}
+{% if record.title is not defined and app.config.get('general/payoff') %} | {{ app.config.get('general/payoff') }}{% endif -%}
+

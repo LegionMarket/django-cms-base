@@ -10,6 +10,8 @@ from django.http import HttpResponse
 from shop.views.auth import PasswordResetConfirm
 from cms.sitemaps import CMSSitemap
 from tlmshop.sitemap import ProductSitemap
+from django.contrib.staticfiles import views
+
 sitemaps = {'cmspages': CMSSitemap,
             'products': ProductSitemap}
 
@@ -29,7 +31,9 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^shop/', include('shop.urls', namespace='shop')),
     url(r'^', include('cms.urls')),
-
-]
-
+    # url(r'^static/(?P<path>.*)$', views.serve),
+    # url(r'^TLM_html5/(?P<path>.*)$', views.serve),
+    # # url(r'^static/TLM_platemo/(?P<path>.*)$', views.static.serve('STATICFILES_DIRS', settings.STATIC_ROOT)),
+    # # url(r'', views.static)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns.extend(static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))

@@ -1,0 +1,17 @@
+from django.db import models
+from embed_video.fields import EmbedVideoField
+from django.core.urlresolvers import reverse
+
+# Create your models here.
+
+
+class VideoBack(models.Model):
+    title = models.CharField(max_length=50)
+    video = EmbedVideoField(verbose_name='Video Link',
+                            help_text='The link for your video to play in the background on your page(s)')
+
+    def __str__(self):
+        return str(self.title)
+
+    def get_absolute_url(self):
+        return reverse('video_back:detail', kwargs={'pk': self.pk})
