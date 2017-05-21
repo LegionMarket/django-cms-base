@@ -1,0 +1,31 @@
+{% load i18n cms_tags static %}
+
+{% if instance.embed_link %}
+    {# show iframe if embed_link is provided #}
+    <iframe src="{{ instance.embed_link }}" {{ instance.attributes_str }} frameborder="0" allowfullscreen="true"></iframe>
+    {% with disabled=instance.embed_link %}
+        {% for plugin in instance.child_plugin_instances %}
+            {% render_plugin plugin %}
+        {% endfor %}
+    {% endwith %}
+{% else %}
+    {# render <source> or <track> plugins #}
+<video id="example_video_1" class="video-js vjs-default-skin" controls preload="{{instance.preload}}" width="{{instance.width}}" height="{{instance.height}}" poster="{{ instance.poster.url }}" data-setup="{}">
+        {% for plugin in instance.child_plugin_instances %}
+            {% render_plugin plugin %}
+        {% endfor %}
+        {% trans "Your browser doesn't support this video format." %}
+        <track kind="subtitles" src="../shared/example-captions.vtt" srclang="en" label="English"></track>
+        <!-- Tracks need an ending tag thanks to IE9 -->
+        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+    </video>
+{% endif %}
+
+{% comment %}
+    # Available variables:
+    {{ instance.template }}
+    {{ instance.label }}
+    {{ instance.embed_link }}
+    {{ instance.poster }}
+    {{ instance.attributes_str }}
+{% endcomment %}
