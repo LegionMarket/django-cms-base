@@ -100,7 +100,6 @@ DJANGO_CMS = (
     'djangocms_snippet',
     'djangocms_style',
     'djangocms_googlemap',
-    'djangocms_video',
     'djangocms_audio',
 
 )
@@ -118,7 +117,6 @@ DJANGO_CMS_ADDONS = (
 THIRD_PARTY_APPS = (
     'embed_video',
     'crispy_forms',
-    # 'bootstrap_sass',
 )
 SHOP = (
     'django_select2',
@@ -145,6 +143,8 @@ SHOP_TOO = (
 )
 LOCAL_APPS = (
     'video_back',
+    'videojs',
+    # 'background',
     'tlmshop',
 )
 DEV_APP = (

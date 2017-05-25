@@ -1,3 +1,7 @@
+from django.apps import AppConfig
 
-name = 'video_back'
-verbose_name = "Background Videos"
+
+class VideoBackConfig(AppConfig):
+    name = 'video_back'
+    verbose_name = "Background Videos"
+

@@ -30,6 +30,7 @@ urlpatterns = [
         name='password_reset_confirm'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^shop/', include('shop.urls', namespace='shop')),
+    url(r'^back/', include('video_back.urls', namespace='video_back')),
     url(r'^', include('cms.urls')),
     # url(r'^static/(?P<path>.*)$', views.serve),
     # url(r'^TLM_html5/(?P<path>.*)$', views.serve),

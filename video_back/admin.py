@@ -1,12 +1,16 @@
 from django.contrib import admin
-
 # Register your models here.
-from .models import VideoBack
-from embed_video.admin import AdminVideoMixin
+
+from video_back.models import VideoBack, Background
 
 
-class VideoBackAdmin(AdminVideoMixin, admin.ModelAdmin):
+class VideoBackAdmin(admin.ModelAdmin):
+    # todo: enter fields
     pass
 
+class BackgroundAdmin(admin.ModelAdmin):
+    # todo: enter fields
+    pass
 
 admin.site.register(VideoBack, VideoBackAdmin)
+admin.site.register(Background, BackgroundAdmin)

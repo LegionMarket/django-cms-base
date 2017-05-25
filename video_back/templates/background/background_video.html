@@ -1,43 +1,38 @@
-{% load sekizai_tags backgrounds_video_image %}
-{% addtoblock "css" %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}node_modules/video.js/dist/video-js.min.css" />
-    <style media="screen" type="text/css">
-        #home
-        {
-            background: url('{{ object.image.url }}');
-            background-size: cover;
-            background-repeat: no-repeat;
-            padding-top: 120px;
-            padding-bottom: 140px;
-            text-align: center;
-        }
-        video#videojs_plugin_{{ object.pk }} {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -100;
-            -ms-transform: translateX(-50%) translateY(-50%);
-            -moz-transform: translateX(-50%) translateY(-50%);
-            -webkit-transform: translateX(-50%) translateY(-50%);
-            transform: translateX(-50%) translateY(-50%);
-            background: url({{ object.image.url }}) no-repeat;
-            background-size: cover;
-        }
-    </style>
-{% endaddtoblock %}
-{% addtoblock "js" %}
-    <script type="text/javascript" src="{{ STATIC_URL }}node_modules/video.js/dist/video.min.js"></script>
-{% endaddtoblock %}
+{% load backgrounds_video_image static %}
 
-<video id="videojs_plugin_{{ object.pk }}" class="video-js vjs-default-skin" nativeControlsForTouch="true" muted={{ object.muted }}
-    preload="auto" loop poster="{{ object.image.url }}"
+<link rel="stylesheet" href="{{ STATIC_URL }}node_modules/video.js/dist/video-js.min.css" />
+<style media="screen" type="text/css">
+    #home
+    {
+        background: url('{% bv__image%}');
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding-top: 120px;
+        padding-bottom: 140px;
+        text-align: center;
+    }
+    video#videojs_plugin_{% bv_pk %} {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+        background: url({{ bv__image }}) no-repeat;
+        background-size: corve;
+    }
+</style>
+<script type="text/javascript" src="{{ STATIC_URL }}node_modules/video.js/dist/video.min.js"></script>
+
+<video id="videojs_plugin_{% bv_pk %}" class="video-js vjs-default-skin" nativeControlsForTouch="true" muted={% bv_muted %}
+    preload="auto" loop poster="{% bv__image %}"
        data-setup="{}">
-    {% for format, url in formats.items %}
-        <source src="{{ url }}" type='{{ format }}'>
-    {% endfor %}
+        <source src="{% background_video %}" type='video/mp4'>
     <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://legionmsrket.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 </video>

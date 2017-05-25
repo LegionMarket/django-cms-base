@@ -1,0 +1,13 @@
+{% load sekizai_tags %}
+{% addtoblock "css" %}<link rel="stylesheet" href="{{ STATIC_URL }}node_modules/video.js/dist/video-js.min.css" />{% endaddtoblock %}
+{% addtoblock "js" %}
+	<script type="text/javascript" src="{{ STATIC_URL }}node_modules/video.js/dist/video.min.js"></script>{% endaddtoblock %}
+
+<video id="videojs_plugin_{{ object.pk }}" class="video-js vjs-default-skin" controls muted={{ object.muted }}
+       preload="auto" width="{{ object.width }}" height="{{ object.height }}" poster="{{ object.image.url }}"
+       data-setup="{}">
+	{% for format, url in formats.items %}
+		<source src="{{ url }}" type='{{ format }}'>
+	{% endfor %}
+    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://legionmsrket.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+</video>

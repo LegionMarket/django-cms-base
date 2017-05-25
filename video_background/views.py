@@ -10,3 +10,7 @@ class PostListView(ListView):
 
 class PostDetailView(DetailView):
     model = VideoPost
+
+    def get_object(self, queryset=None):
+        pass
+

@@ -1,9 +1,8 @@
 from django.conf.urls import url
 
-from .views import VideoBackListView, VideoBackDetailView
+from video_back.views import BackgroundTemplateView, VideoBackTemplateView
 
 urlpatterns = [
-    url(r'(?P<pk>\d+)/$', VideoBackDetailView.as_view(), name='detail'),
-    url(r'$', VideoBackListView.as_view(), name='list'),
-
+    url(r'^$', BackgroundTemplateView.as_view(), name='image'),
+    url(r'^$', VideoBackTemplateView.as_view(), name='video'),
 ]

@@ -1,4 +1,5 @@
-{% load staticfiles i18n cms_tags menu_tags sekizai_tags embed_video_tags  %}
+{% load staticfiles i18n cms_tags menu_tags sekizai_tags static %}
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -26,17 +27,19 @@
 		<!-- fullpage -->
 		<link rel="stylesheet" href="{% static 'TLM_platemo/t458_lavish/css/jquery.fullPage.css' %}">
 		<!-- custom -->
-		<link rel="stylesheet" href="{% static 'TLM_platemo/t458_lavish/css/templatemo-style.css' %}">
+        <link rel="stylesheet" href="{% static 'TLM_platemo/t458_lavish/css/templatemo-style.css' %}">
+        {% include "background/video/bv_style.html" %}
         <script src="{% static 'TLM_platemo/js/vendor/modernizr-2.8.3.min.js' %}"></script>
         {% render_block "css" %}
         {{ ALDRYN_SNAKE.render_head }}
 	</head>
 	<body>
     {% cms_toolbar %}
-	<div id="fullpage">
-
+    {% include 'background/video/bv_player.html' %}
+    <div id="fullpage">
 		<!-- start home -->
 		<div id="home" class="section">
+
 			<div class="container">
 				<div class="row">
 					<div class="col-md-2"></div>
@@ -71,17 +74,6 @@
 								<i class="fa fa-laptop"></i>
 							</div>
 							<div class="media-body">
-								<h3 class="media-heading">Responsive Design</h3>
-                                {# you can just embed #}
-                                {% video item.video 'small' %}
-
-                                {# or use variables (with embedding, too) #}
-                                {% video item.video as my_video %}
-                                URL: {{ my_video.url }}
-                                Thumbnail: {{ my_video.thumbnail }}
-                                Backend: {{ my_video.backend }}
-                                {% video my_video 'small' %}
-                                {% endvideo %}
 							</div>
 						</div>
 					</div>
@@ -264,6 +256,7 @@
 		<!-- text rotater -->
 		<script src="{% static 'TLM_platemo/t458_lavish/js/jquery.simple-text-rotator.js' %}"></script>
 		<!-- custom -->
+        {% include 'background/video/bv_script.html' %}
 		<script src="{% static 'TLM_platemo/t458_lavish/js/custom.js' %}"></script>
     {% render_block "js" %}
     {{ ALDRYN_SNAKE.render_tail }}

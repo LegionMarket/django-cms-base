@@ -11,19 +11,15 @@ from filer import settings as filer_settings
 from . import models
 
 
-class VideojsPlugin(CMSPluginBase):
-    model = models.VideojsModel
-    name = _("HTML5 Video")
+class BackgroundPlugin(CMSPluginBase):
+    model = models.BackgroundModel
+    name = _("Background Images and Videos")
 
-    render_template = "cmsplugin_filer_html5video/video.html"
+    render_template = "background/background.html"
     text_enabled = True
 
     general_fields = [
         'title',
-        ('width', 'height'),
-        'auto_play',
-        'auto_hide',
-        'fullscreen',
         'loop',
         'muted',
         ]
@@ -33,13 +29,13 @@ class VideojsPlugin(CMSPluginBase):
             'fields': general_fields,
         }),
         (_('formats'), {
-            'fields': ('video_mp4', 'video_webm', 'video_ogv', 'image')
+            'fields': ('image', 'backgrounds_mp4',)
         })
     ]
 
     def render(self, context, instance, placeholder):
         formats = {}
-        for format in ('video_mp4', 'video_webm', 'video_ogv'):
+        for format in 'backgrounds_mp4':
             if getattr(instance, format + '_id'):
                 formats[format.replace('_', '/')] = getattr(instance, format).url
         context.update({
@@ -47,9 +43,10 @@ class VideojsPlugin(CMSPluginBase):
             'placeholder': placeholder,
             'formats': formats
         })
+
         return context
 
     def icon_src(self, instance):
-        return os.path.normpath(u"%s/icons/video_%sx%s.png" % (filer_settings, 32, 32,))
+        return os.path.normpath(u"%s/icons/background_%sx%s.png" % (filer_settings, 640, 800))
 
-plugin_pool.register_plugin(VideojsPlugin)
+plugin_pool.register_plugin(BackgroundPlugin)
